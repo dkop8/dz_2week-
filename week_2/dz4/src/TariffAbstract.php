@@ -1,7 +1,7 @@
 <?php
     include 'interface/ITariff.php';
     
-    abstract class TariffAbstracrt implements ITariff
+    abstract class TariffAbstract implements ITariff
     {
         protected $nameTariff;
         protected $priceKM;
@@ -39,7 +39,7 @@
             if ($this->services) {
                 $final = ['finalPrice' => $price];
                 foreach ($this->services as $service) {
-                    $rez = $service->aplly($this, $price);
+                    $rez = $service->apply($this, $price);
 
                     if ($rez['priceServiceGPS'] != 0) {
                         $final += [
@@ -93,6 +93,7 @@
             if (is_float($this->priceMin)) {
                 $this->priceMin = number_format($this->priceMin, 1);
             }
+
             echo "= {$this->distance} км * {$this->priceKM} руб / км + {$this->min} мин * {$this->priceMin} руб / мин {$str}= {$listPrice['km']} + {$listPrice['min']} {$dop}= {$this->price} <br><br>";
         }
 

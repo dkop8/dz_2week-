@@ -20,7 +20,7 @@ class AddedService implements IService
         $this->typeService = $typeService;
     }
     
-    public function aplly ($tariff, &$price) 
+    public function apply ($tariff, &$price) 
     {
         $rez = [
             'priceServiceGPS' => 0,

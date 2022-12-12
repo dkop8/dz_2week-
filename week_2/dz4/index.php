@@ -2,9 +2,9 @@
 
     include 'src/AddedService.php';
     include 'src/TariffAbstract.php';
-    include 'src/classTarrif/TariffBasic.php';
-    include 'src/classTarrif/TariffStudent.php';
-    include 'src/classTarrif/tariffHourly.php';
+    include 'src/classTarrif/BasicTariff.php';
+    include 'src/classTarrif/StudentTariff.php';
+    include 'src/classTarrif/HourlyTariff.php';
     
 
 
@@ -13,7 +13,6 @@
     $user1 = $tariff->activateTariff(5, 5, 18);
     if ($user1) {
         $tariff->addService(new AddedService('GPS'));
-        // $tariff->addService(new AddedService('Driver'));
         echo $tariff->orderTrip() . "<br>";
     }
 
@@ -29,8 +28,8 @@
 
     echo "<h2> Студенческий тариф:</h2>";
 
-    $tariff3 = new BasicTariff();
-    $user3 = $tariff3->activateTariff(10, 180, 18);
+    $tariff3 = new StudentTariff();
+    $user3 = $tariff3->activateTariff(10, 180, 22);
 
     if ($user3) {
         $tariff3->addService(new AddedService('Driver'));
@@ -40,7 +39,7 @@
 
     echo "<h2> Студенческий тариф - возраст меньше 18:</h2>";
 
-    $tariff4 = new BasicTariff();
+    $tariff4 = new StudentTariff();
     $user4 = $tariff4->activateTariff(5, 60, 16);
 
     if ($user4) {

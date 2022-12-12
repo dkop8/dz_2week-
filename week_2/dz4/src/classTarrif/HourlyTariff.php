@@ -1,7 +1,7 @@
 <?php
 
 
-class HourlyTariff extends TariffAbstracrt
+class HourlyTariff extends TariffAbstract
 {
     protected $priceKM = 0;
     protected $priceMin = 200/60;
@@ -17,10 +17,8 @@ class HourlyTariff extends TariffAbstracrt
 
     public function countPrice() 
     {
-        $price = $this->priceKM * $this->distance + $this->priceMin * $this->roundHour($this->min);
-        $final = [];
-        $final += $this->countPriceAddService($price);
-        return $final;
+        $this->min = $this->roundHour($this->min);
+        return parent::countPrice();
     }
     
 }
